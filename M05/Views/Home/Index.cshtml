@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <!-- Este es un comentario HTML y aparece en el contenido enviado al cliente-->
+        @*Este es un comentario de código y no debe ser generado por el motor de vista Razor*@
+        <p>Razor no interpretará este texto como código ya que no se encuentra el símbolo arroba "at" @@</p>
+        <p>La hora actual del servidor es: </p>
+        @DateTime.Now.ToShortTimeString()
+        <p>Correo del administrador dcaballero@@iconoi.com</p>
+        @{
+            @:Este texto se encuentra en un bloque de código
+            @:pero el delimitador @@: lo declara como contenido.
+
+            string Mensaje = "Hola, Mundo";
+            <div>
+                @Mensaje
+            </div>
+            @: Este es el valor de la variable Mensaje: @Mensaje
+            <br />
+            <text>
+                Este es contenido y no código
+                podemos también incluir código. <br />
+                @Mensaje
+            </text>
+        }
+
+        @{
+            double Precio = 2;
+            <span>Precio incluyendo impuestos: @(Precio * 1.16)</span>
+        }
+        @{
+//Razor interpreta el contenido de este bloque commo código del lado del servidor
+        }
+
+        @if (Precio < 10)
+        {
+            Precio = Precio * 2;
+        }
+        else
+        {
+            Precio = Precio * 1.5;
+        }
+        <br/>
+        Nuevo precio: @Precio
+        <br/>
+        @foreach (var item in ViewBag.Dias)
+        {
+            <div>@item</div>   
+        }
+
+    </div>
+</body>
+
+</html>

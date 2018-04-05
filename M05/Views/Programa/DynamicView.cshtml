@@ -1,0 +1,22 @@
+﻿@model dynamic
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DynamicView</title>
+</head>
+<body>
+    <div> 
+        Programa: @Model.descripcion <br/>
+        @if (Model.GetType().GetProperty("ExternID") !=null)
+        {
+            @:Exter Id: @Model.ExternID<br/>
+        }
+    </div>
+</body>
+</html>
